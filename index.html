@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreServices - Professional Solutions</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Layout & Containers */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-alt {
+            background-color: #fff;
+        }
+        
+        /* Grid System */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .col {
+            padding: 0 15px;
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2c3e50;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #fff;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: #fff;
+            color: #3498db;
+        }
+        
+        /* Service Cards */
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        /* Testimonials */
+        .testimonial {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #3498db;
+        }
+        
+        /* Call to Action */
+        .cta {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta h2 {
+            color: #fff;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .footer-links h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .col {
+                flex: 0 0 50%;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text {
+                flex: 0 0 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .col {
+                flex: 0 0 100%;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 120px 0 5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .footer-section {
+                flex: 0 0 100%;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Core<span>Services</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Professional Services to Grow Your Business</h1>
+            <p>We provide expert solutions tailored to your unique needs. Our dedicated team helps you achieve your business goals with innovative strategies and exceptional service.</p>
+            <div>
+                <a href="#services" class="btn">Our Services</a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Business Consulting</h3>
+                        <p>Strategic planning and analysis to optimize your business operations and increase profitability.</p>
+                        <p>Our expert consultants bring years of industry experience to help your business thrive in today's competitive market.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Digital Marketing</h3>
+                        <p>Comprehensive digital marketing strategies to boost your online presence and drive customer engagement.</p>
+                        <p>From SEO to social media campaigns, we help you connect with your target audience effectively.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Web Development</h3>
+                        <p>Custom website design and development solutions that reflect your brand identity and meet your business needs.</p>
+                        <p>We create responsive, user-friendly websites optimized for performance and conversion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-alt">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Replace with your actual image path -->
+                    <img src="https://placehold.co/500x300" alt="Team of professionals">
+                </div>
+                <div class="about-text">
+                    <h3>Your Trusted Partner</h3>
+                    <p>CoreServices has been providing exceptional business solutions for over a decade. Our mission is to empower businesses of all sizes to achieve their full potential through innovative strategies and dedicated support.</p>
+                    <p>Our team consists of industry experts with extensive experience in various fields, ensuring that we can address any challenge your business might face. We believe in building long-term relationships with our clients based on trust, transparency, and measurable results.</p>
+                    <p>What sets us apart is our personalized approach. We take the time to understand your unique business needs and develop customized solutions that drive growth and success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="testimonial">
+                        <p>"CoreServices transformed our business operations with their expert consulting. Our productivity increased by 30% within the first quarter of implementation."</p>
+                        <p class="testimonial-author">- Sarah Johnson, CEO of TechSolutions</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="testimonial">
+                        <p>"The digital marketing strategy developed by the CoreServices team helped us double our online presence. Their approach was both creative and data-driven."</p>
+                        <p class="testimonial-author">- Michael Rodriguez, Marketing Director</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="testimonial">
+                        <p>"Our new website not only looks fantastic but has significantly improved our conversion rates. The team was professional and responsive throughout the entire project."</p>
+                        <p class="testimonial-author">- Emily Chen, Small Business Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Elevate Your Business?</h2>
+            <p>Let's discuss how our services can help you achieve your goals.</p>
+            <a href="#contact" class="btn">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <span class="footer-logo">CoreServices</span>
+                <p>Professional business solutions designed to help you succeed in today's competitive marketplace.</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Business Consulting</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Brand Strategy</a></li>
+                    <li><a href="#">Market Research</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>123 Business Avenue<br>Bengaluru - 560001</p>
+                <p>Email: info@coreservices.com<br>Phone: 9425263647</p>
+
+            </div>
+        </div>
+        <div class="copyright container">
+            <p>&copy; 2025 CoreServices. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
